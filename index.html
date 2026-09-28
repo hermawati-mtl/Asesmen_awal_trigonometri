@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asesmen Awal Matematika - Fungsi Trigonometri</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --border: #e2e8f0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 750px;
+      margin: 0 auto;
+      background: var(--card);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    h1 { color: var(--primary); text-align: center; margin-bottom: 8px; font-size: 1.8rem; }
+    p.subtitle { text-align: center; color: #64748b; margin-bottom: 24px; font-size: 0.95rem; }
+    .section-title {
+      background: #eff6ff;
+      color: var(--primary);
+      padding: 10px 15px;
+      border-left: 4px solid var(--primary);
+      font-weight: bold;
+      margin-top: 25px;
+      margin-bottom: 15px;
+      border-radius: 0 6px 6px 0;
+    }
+    .form-group { margin-bottom: 18px; }
+    label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.95rem; }
+    input[type="text"], input[type="number"], select, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-size: 0.95rem;
+    }
+    textarea { resize: vertical; min-height: 80px; }
+    table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+    th, td { border: 1px solid var(--border); padding: 8px; text-align: center; font-size: 0.9rem; }
+    th { background: #f1f5f9; }
+    button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 20px;
+      transition: background 0.2s;
+    }
+    button:hover { background: #1d4ed8; }
+    button:disabled { background: #94a3b8; cursor: not-allowed; }
+
+    #resultCard {
+      display: none;
+      text-align: center;
+      padding: 25px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    .kat-A { background: #fef2f2; border: 2px solid #ef4444; color: #991b1b; }
+    .kat-B { background: #fefce8; border: 2px solid #eab308; color: #854d0e; }
+    .kat-C { background: #f0fdf4; border: 2px solid #22c55e; color: #166534; }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Asesmen Awal Trigonometri</h1>
+  <p class="subtitle">Materi: Memodelkan Fenomena Periodik dengan Fungsi Trigonometri</p>
+
+  <form id="quizForm">
+    <!-- Identitas Murid -->
+    <div class="form-group">
+      <label for="kelas">Kelas / Rombel:</label>
+      <select id="kelas" required onchange="updateNamaDropdown()">
+        <option value="">-- Pilih Kelas --</option>
+        <option value="XI HJ 1">XI HJ 1</option>
+        <option value="XI HJ 2">XI HJ 2</option>
+        <option value="XI HJ 3">XI HJ 3</option>
+        <option value="XI HJ 4">XI HJ 4</option>
+        <option value="XI HJ 5">XI HJ 5</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="nama">Nama Lengkap Murid:</label>
+      <select id="nama" required disabled>
+        <option value="">-- Pilih Kelas Terlebih Dahulu --</option>
+      </select>
+    </div>
+
+    <!-- BAGIAN 1 -->
+    <div class="section-title">Bagian 1: Konsep Dasar Trigonometri</div>
+
+    <div class="form-group">
+      <label>1. Nilai Sudut Istimewa:</label>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+        <div>
+          <label style="font-weight: normal;">a) sin(90°)</label>
+          <input type="number" step="any" id="q1a" required>
+        </div>
+        <div>
+          <label style="font-weight: normal;">b) cos(0°)</label>
+          <input type="number" step="any" id="q1b" required>
+        </div>
+        <div>
+          <label style="font-weight: normal;">c) cos(90°)</label>
+          <input type="number" step="any" id="q1c" required>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>2a. Nilai Maksimum & Minimum dari y = sin(x):</label>
+      <select id="q2a" required>
+        <option value="">-- Pilih Jawaban --</option>
+        <option value="correct">Maksimum = 1, Minimum = -1</option>
+        <option value="wrong1">Maksimum = 2, Minimum = -2</option>
+        <option value="wrong2">Maksimum = 1, Minimum = 0</option>
+        <option value="wrong3">Maksimum = 0, Minimum = -1</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>2b. Rentang sudut untuk 1 gelombang penuh y = sin(x):</label>
+      <select id="q2b" required>
+        <option value="">-- Pilih Jawaban --</option>
+        <option value="180">180°</option>
+        <option value="360">360°</option>
+        <option value="90">90°</option>
+        <option value="720">720°</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>3. Diberikan f(t) = 3 cos(2t) + 1. Hitunglah:</label>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+        <div>
+          <label style="font-weight: normal;">a) Nilai f(0°)</label>
+          <input type="number" id="q3a" required>
+        </div>
+        <div>
+          <label style="font-weight: normal;">b) Nilai f(45°)</label>
+          <input type="number" id="q3b" required>
+        </div>
+      </div>
+    </div>
+
+    <!-- BAGIAN 2 -->
+    <div class="section-title">Bagian 2: Interpretasi Grafik & Fenomena Periodik</div>
+
+    <div class="form-group">
+      <label for="q4">4. Jelaskan perbedaan grafik y = 3 sin(x) + 2 dibandingkan dengan y = sin(x):</label>
+      <textarea id="q4" required placeholder="Jelaskan pengaruh angka 3 dan +2 terhadap bentuk dan posisi grafik..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>5. Amati Tabel Ketinggian Roda Bianglala Berikut:</label>
+      <table>
+        <tr><th>Waktu (Menit)</th><td>0</td><td>2</td><td>4</td><td>6</td><td>8</td><td>10</td></tr>
+        <tr><th>Tinggi (Meter)</th><td>2</td><td>10</td><td>18</td><td>10</td><td>2</td><td>10</td></tr>
+      </table>
+
+      <label style="margin-top: 10px;">a) Tinggi Maksimum dan Minimum Bianglala:</label>
+      <input type="text" id="q5a" placeholder="Contoh: Maks = 18m, Min = 2m" required>
+
+      <label style="margin-top: 10px;">b) Waktu untuk 1 putaran penuh (Periode):</label>
+      <select id="q5b" required>
+        <option value="">-- Pilih Jawaban --</option>
+        <option value="4">4 Menit</option>
+        <option value="6">6 Menit</option>
+        <option value="8">8 Menit</option>
+        <option value="10">10 Menit</option>
+      </select>
+
+      <label style="margin-top: 10px;">c) Apakah ini fenomena periodik? Berikan alasan singkat:</label>
+      <textarea id="q5c" required placeholder="Tuliskan alasanmu..."></textarea>
+    </div>
+
+    <button type="submit" id="submitBtn">Kirim Jawaban & Lihat Kelompok</button>
+  </form>
+
+  <!-- Kartu Hasil Jawaban -->
+  <div id="resultCard">
+    <h2 id="resultTitle">Hasil Asesmen Awal</h2>
+    <p>Skor Otomatis Anda: <strong id="scoreText">0</strong> / 100</p>
+    <div id="groupBadge" class="badge">Kelompok -</div>
+    <p id="groupDesc" style="margin-top: 10px; font-size: 0.95rem;"></p>
+    <p style="font-size: 0.85rem; color: #64748b; margin-top: 15px;">Data jawaban Anda telah berhasil dikirimkan ke Google Sheets Guru.</p>
+  </div>
+</div>
+
+<script>
+  // Data Siswa per Kelas
+  const dataSiswa = {
+    "XI HJ 1": [
+      "ADIIBAH AULIA ZAHRA", "AHSANI ALWAN", "ALIFAH CITRA PURI SYAFILA", "ANASTHASYA MEWARDHYRA LASE",
+      "ANDREAS SANGAP BASTANTA", "BACHTIAR IBNU SINAGA", "BOY SILITONGA", "CHELSEA YOHANA SILABAN",
+      "CUT FAMELIN RAHMADANI", "DAME DELFINA SIMBOLON", "DANENDRA RAMADHAN", "DIANDRA VIRA APRILIA",
+      "DIANTI ARAISYA PUTRI", "ELMIRA YAZMINE MIHARTO", "FACHRY ATHAYYA RAMADHAN", "HAFIQ ALFAIZI",
+      "HANIFAH AL HUMAIRAH", "HAQQU MAZAYA SRIBASUKI", "HIZSYAURA QARYRA", "INDAH PUTRI YANKY",
+      "JOHAN ALFRED NABABAN", "KEILHA AFIFAH MUFTHI FHATARANI", "KHAFIFATUL AULIA NIKMATH",
+      "KHANZA LAUTDHEA SUKRISNO", "M. DAFFA PUTRA MULIA", "MARTINUS PRIMO GUNAWAN", "MUHAMAD NAUFALINO",
+      "MUHAMMAD AYATULLAH BIMANTARA", "MUHAMMAD HARRAS ALFARISI", "MUHAMMAD TAMALAKI SYAMSIL BAHYA",
+      "NAURAH NURIN IMANINA DAULAY", "NIKITA AGATHA SITOMPUL", "NIKO SAPUTRA", "QUEENBY TIVANNA HANDOYO",
+      "RAHMA DINI", "RASIKAH SUMA PUSPITA", "RIFALDI WALVER MANIHURUK", "RUBEN DARMANTO SIMANJUNTAK",
+      "SAUL HUDSON SIAHAAN", "SHAFARINA AWALIYAH", "SHIFA DWI ANNISYAH", "YANNEZA KARTINI RANGKUTI",
+      "YODHA DANADYAKSA", "ZIAD MUHAMMAD ABDILLAH"
+    ],
+    "XI HJ 2": [
+      "ABDULLAH SHOFY MANGKUBUMI", "ALYA MAHARANY", "AURA RAHMA RAMADHANI", "AURELIA IVANA ANINDYA",
+      "CHELSI WIDELIA", "DAULA ZASKIA SANTOSO", "DAVA ALAMSYAH", "DAYANA MAYANG SARI", "DESTI RAHMA AULIYA",
+      "DESVIANO RONALDO AL HASANI", "DEVINKA ARABELLA SIDABUTAR", "DILKANA BANGUN", "FILZAH AQILA HILMAN",
+      "GERD SION MARTHIN TAMPUBOLON", "GIVESON FERDINAN SIMORANGKIR", "ILHAM", "JABAR ANANDA SUTRISNO",
+      "KEISHA FARRAS AZHAR", "KEVIN KESUMA", "MUHAMMAD FAUZI RAFIE", "MUHAMMAD KAMIL OMAIR",
+      "MUHAMMAD NUR AHADYAH", "MUHAMMAD TEGUH PRATAMA", "NADIRA FELLAH", "NAUFAL ZUHDI",
+      "NAYLA FEBY MAULIDA", "NAZWA MAWAR SIMATUPANG", "OGIVIA IXCHEL MANURUNG", "PAULUS GINTING",
+      "PRANATA HAMONANGAN SITUMORANG", "PUTRI AZURA RAZY QOIRY", "QHAIRA ZALFA NAYSILATABRI",
+      "QHIRAN FRISTA BIRRUL WALIDAIN", "QUINSHA AZZAHRA", "RAFI AKBAR MAULANA", "RAHMA MAULIDYA HASIBUAN",
+      "RANDY REYNDRA", "SYALIMAR QANIA PRIHATINI", "TRI VELIGIA LOVENIA BAKARA", "VIVI AL ARIF",
+      "WELDA YOHANNA PASARIBU", "WICHITA SALMA NUAINA IBRAYA", "WIDIA SAFITRI", "YOSSY FAHRI ANGGARA"
+    ],
+    "XI HJ 3": [
+      "ALICIA ILLUMINA LARASATI", "ALIFI KAYYISA RIFA", "AMEERA GHAISANI ZAFEERA LUBIS", "ARIF SAPUTRI SIMAMORA",
+      "ARUM JANEETA PUTRI AKEKA", "CHRISTIAN MICHAEL PRATAMA GULTOM", "DEAZY AURIN", "DESMITHA PUTRI ARIANTI",
+      "DINDA AYU DHIRESWORO", "DIO PANCA PRIMA", "HAFIDZ LUTFI PUTRA", "HANIFAH RIANAWATI DASOPANG",
+      "HUMAIRA RAHADATUL AISY", "INTAN NABILLA", "JASMINE APRILIANA BR SEMBIRING", "JOYCE APRILIA HUTAPEA",
+      "KENZIE KEYZILLA MARTHA", "KRISTIANY FELICIA F SILALAHI", "LATIFAH", "LAURA OLIVIA SIMANJUNTAK",
+      "M. YASER ALVARABY", "MARIO CHRISTIAN SITUMEANG", "MUHAMMAD ABYAN SYAUKI ATHALLAH",
+      "MUHAMMAD FATIH SAJID", "MUHAMMAD IZA", "MUHAMMAD KHAIRUL AZZAM", "NABILA THAYYIBATUNNISA",
+      "NAYLA OKTAVIANI", "NAZWA MELYSYA PUTRI", "PRINCESSA URANTIA DALLYMARTHA", "RAFKANIA AGNASHIRA SUGIHARTO",
+      "ROSA TRI JUNIANTI", "SHANIA MARWA", "SITI AISYAH", "SRI HASNA SINTA MARITO PANJAITAN",
+      "SYAFIRA ANAYA PUTRI JUNAIDI", "SYAKIILAH RATU YUANA", "TINTANIA ZILVIA PUTRI", "UMAIRAH",
+      "VIONA FELICIA SIBUEA", "WAODE AISYAH MEILYTANIA", "YUSUF HIZKIA TANDI", "ZIFA LAKEISHA NST"
+    ],
+    "XI HJ 4": [
+      "ADELIO LUTHFIE RAFIF", "AGTHAMA PUTRA GUCHAIRI", "AISA SELVIRA", "AMEERA THALITA SAKHI",
+      "AZZAHRA NADHIFAH FIKRIYAH", "BERNIKE GURUSINGA", "CLARA RADIAH CITRA", "CLARISSA CARENINA BANGUN",
+      "CUT NAZLA FULIZAR", "CYNTIA NUVUS FITRI", "DANISH DIFIRANDA SIMARMATA", "DARA SRY WAHYUNI",
+      "DHIYA MAZAYA PUTRI SYAHRIL", "DIAMENTI EVA SIMANGUNSONG", "FARDHAN BERKAH AFRELLY",
+      "FATHIA AMANINA DAMYATHIE", "FRANSISCA CLAZIO HUTABARAT", "HANIFAH RAMADHANI AZVIS",
+      "INTAN PUTRI SALSABILLA", "JESICA ARUMI ALICIA", "JULIA CHRISTIAN SIBUEA", "JULYANE INDRI",
+      "KARINA MELATI KANZA", "KEANU RIFAI RIZQI", "KEIKO MARITZA SHAPUTRI YOGASWARA", "LADIES LOVELY",
+      "LOIS EUNICE ILELA", "MAKANATUL NGILMAH", "MEISY DELYA ISKANDAR", "MICHELLE GRETHA WELLY BANJARNAHOR",
+      "MUHAMMAD FARID AMARDIYAB", "MUHAMMAD RIZQ", "MUHAMMAD RUSYDAN ABDUL QOHAR", "NAYLA NOVRIYANTI",
+      "NIZLA QIR'ANA", "OCTHA ARDINA .M", "RAFAEL IBRAHIM ZAIN", "RENTH REFIFANEA KAMPONG GAGHANSA",
+      "RORO PUTRI CARISSA PRAMWESTY", "SAILA SYAKIRAH", "SYAWALINA TRISNA FITRIANI", "ZASKIA HURUN'IIN",
+      "ZHASKIA ALVA RHAMADANI", "ZHIVANA LETISYA"
+    ],
+    "XI HJ 5": [
+      "ABIGAIL ELSYHANA TARIGAN", "AIRA PUTRI MAHARANI", "ALISHA PUTRI WIBOWO", "ALMIRA ZAHRA RAMADHANI",
+      "ANDRA MAULANA LUBIS", "ARIQUL ISYRAF", "AUFA EGA SUWITO", "AZZURA JASMIN", "CALLYSTA ARIENDRA KUSUMA",
+      "CLAUDIA SINEDUA SITOMPUL", "CLEONSEPTIAN PURWAPRAYOGA", "CRISTHOFER", "DAFFA HANANIA CHAESAR",
+      "EVAN SALOMO SINAGA", "FAJAR TRI OKTAVIANO", "FARRAS ALMER ABIYU", "FATHAN GRAHA ADMAJA",
+      "FATHIR RISKYRIADI", "FINESYA LUMBAN RAJA", "GABRIEL KEVIN SARUKSUK", "HAURA SYIFA AMANI",
+      "HUMAIRA SANDRINA RIVACH", "JOSUA TOGI PARMONANGAN SITINJAK", "JUAN VEROSI PARDEDE",
+      "KALISTUS ABETNEGO NAIBAHO", "KHANZA RAISSYA SUSANTO", "LETTY ZIA FITRI", "LINDHA TOI TEE LEEN",
+      "LYDIA GRACE SINTANAULI LUMBAN TOBING", "MATTHEW DAVE BUTARBUTAR", "MIRA NURAINI HUTAGALUNG",
+      "MUHAMMAD ELTAYEB ADENA", "MUHAMMAD FARHAN", "MUHAMMAD RIFQI FAHREZA", "MUJAHID FERDA FIRAS AL HAKIM",
+      "QUEEN SHAFFIRA PERMANA", "SISWEI MEEI", "SITI NADHIRA ALIANDRA", "SYAFA ANINDHITA ARIYANTO",
+      "TEUKU MUHAMMAD AZWAR HAMZAH", "TIARA PUTRI FEBRIANI", "VAREL REYNALDI HUTABARAT",
+      "YOLA KAREN TAMBUNAN", "ZAID AHMAR HAKIM"
+    ]
+  };
+
+  function updateNamaDropdown() {
+    const kelasSelect = document.getElementById('kelas');
+    const namaSelect = document.getElementById('nama');
+    const selectedKelas = kelasSelect.value;
+
+    namaSelect.innerHTML = '';
+
+    if (selectedKelas && dataSiswa[selectedKelas]) {
+      namaSelect.disabled = false;
+      const defaultOption = document.createElement('option');
+      defaultOption.value = '';
+      defaultOption.text = '-- Pilih Nama Anda --';
+      namaSelect.appendChild(defaultOption);
+
+      dataSiswa[selectedKelas].forEach(nama => {
+        const option = document.createElement('option');
+        option.value = nama;
+        option.text = nama;
+        namaSelect.appendChild(option);
+      });
+    } else {
+      namaSelect.disabled = true;
+      const defaultOption = document.createElement('option');
+      defaultOption.value = '';
+      defaultOption.text = '-- Pilih Kelas Terlebih Dahulu --';
+      namaSelect.appendChild(defaultOption);
+    }
+  }
+
+  // Link Apps Script
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxwt_Q7AV5xv9csMZIk0O_qbHr4MBcBhKEpko39K1Zvdd7x1sTEB5RPFw8AYY_0uHMFTQ/exec";
+
+  document.getElementById('quizForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Mengirim Jawaban & Menghitung Skor...";
+
+    // 1. Hitung Skor Otomatis
+    let score = 0;
+
+    if (parseFloat(document.getElementById('q1a').value) === 1) score += 5;
+    if (parseFloat(document.getElementById('q1b').value) === 1) score += 5;
+    if (parseFloat(document.getElementById('q1c').value) === 0) score += 5;
+
+    if (document.getElementById('q2a').value === 'correct') score += 10;
+    if (document.getElementById('q2b').value === '360') score += 10;
+
+    if (parseFloat(document.getElementById('q3a').value) === 4) score += 7.5;
+    if (parseFloat(document.getElementById('q3b').value) === 1) score += 7.5;
+
+    const q4Text = document.getElementById('q4').value.toLowerCase();
+    if (q4Text.includes('tinggi') || q4Text.includes('amplitudo') || q4Text.includes('atas') || q4Text.includes('geser') || q4Text.includes('skala')) {
+      score += 20;
+    } else {
+      score += 10;
+    }
+
+    const q5aText = document.getElementById('q5a').value.toLowerCase();
+    if (q5aText.includes('18') && q5aText.includes('2')) score += 10;
+    if (document.getElementById('q5b').value === '8') score += 10;
+    if (document.getElementById('q5c').value.trim().length > 5) score += 10;
+
+    // 2. Tentukan Kelompok
+    let kelompok = "";
+    let desc = "";
+    let badgeClass = "";
+
+    if (score <= 50) {
+      kelompok = "Kelompok A (Need Support)";
+      badgeClass = "kat-A";
+      desc = "Anda berada di <strong>Kelompok A</strong>. Pada stasiun rotasi nanti, Anda akan mendapatkan bimbingan intensif dari guru untuk memperkuat pemahaman dasar.";
+    } else if (score <= 75) {
+      kelompok = "Kelompok B (On-Track)";
+      badgeClass = "kat-B";
+      desc = "Anda berada di <strong>Kelompok B</strong>. Anda sudah memahami konsep dasar dan siap memodelkan fungsi trigonometri melalui diskusi kelompok.";
+    } else {
+      kelompok = "Kelompok C (Advanced)";
+      badgeClass = "kat-C";
+      desc = "Selamat! Anda berada di <strong>Kelompok C</strong>. Anda siap menjadi Station Leader dan merancang prediksi model kompleks di Stasiun 5 & 6.";
+    }
+
+    // 3. Format URL Search Parameters (Memastikan Pengiriman Data Tembus CORS)
+    const formData = new URLSearchParams();
+    formData.append('kelas', document.getElementById('kelas').value);
+    formData.append('nama', document.getElementById('nama').value);
+    formData.append('skorTotal', score);
+    formData.append('kelompok', kelompok);
+    formData.append('q1a', document.getElementById('q1a').value);
+    formData.append('q1b', document.getElementById('q1b').value);
+    formData.append('q1c', document.getElementById('q1c').value);
+    formData.append('q2a', document.getElementById('q2a').options[document.getElementById('q2a').selectedIndex].text);
+    formData.append('q2b', document.getElementById('q2b').value);
+    formData.append('q3a', document.getElementById('q3a').value);
+    formData.append('q3b', document.getElementById('q3b').value);
+    formData.append('q4', document.getElementById('q4').value);
+    formData.append('q5a', document.getElementById('q5a').value);
+    formData.append('q5b', document.getElementById('q5b').value);
+    formData.append('q5c', document.getElementById('q5c').value);
+
+    // 4. Kirim Data dengan metode Fetch URL-encoded
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: formData.toString()
+    }).then(() => {
+      document.getElementById('quizForm').style.display = 'none';
+      const resultCard = document.getElementById('resultCard');
+      resultCard.className = badgeClass;
+      document.getElementById('scoreText').innerText = score;
+
+      const badge = document.getElementById('groupBadge');
+      badge.innerText = kelompok;
+      document.getElementById('groupDesc').innerHTML = desc;
+
+      resultCard.style.display = 'block';
+    }).catch(error => {
+      alert("Pengiriman gagal: " + error);
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Kirim Jawaban & Lihat Kelompok";
+    });
+  });
+</script>
+
+</body>
+</html>
